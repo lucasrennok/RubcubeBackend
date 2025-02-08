@@ -50,13 +50,13 @@ Além disso, é necessário renomear o .env.example para .env
 
 ## Resultados
 
-![Exemplo de retorno história 1](docs/images/historia1.png)
+![Exemplo de retorno história 1](docs/images/historia1.PNG)
 
-![Exemplo de retorno história 2](docs/images/historia2.png)
+![Exemplo de retorno história 2](docs/images/historia2.PNG)
 
-![Exemplo de retorno história 3-1](docs/images/historia3-1.png)
+![Exemplo de retorno história 3-1](docs/images/historia3-1.PNG)
 
-![Exemplo de retorno história 3-2](docs/images/historia3-2.png)
+![Exemplo de retorno história 3-2](docs/images/historia3-2.PNG)
 
 ## Dificuldades
 
