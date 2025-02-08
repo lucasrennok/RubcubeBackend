@@ -1,19 +1,22 @@
-// eslint.config.js (versão CommonJS)
-const js = require('@eslint/js');
-const ts = require('@typescript-eslint/eslint-plugin');
+const js = require('@eslint/js').configs.recommended;
+const tsPlugin = require('@typescript-eslint/eslint-plugin');
 const tsParser = require('@typescript-eslint/parser');
 const prettier = require('eslint-plugin-prettier');
 
 module.exports = [
-  js.configs.recommended,
+  js,
   {
     files: ['**/*.ts'],
     languageOptions: {
       parser: tsParser,
       sourceType: 'module',
+      globals: {
+        test: 'readonly',
+        expect: 'readonly',
+      },
     },
     plugins: {
-      '@typescript-eslint': ts,
+      '@typescript-eslint': tsPlugin,
       prettier,
     },
     rules: {

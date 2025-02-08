@@ -23,3 +23,6 @@ pnpm-debug.log*
 .env.local
 .env.*.local
 !.gitkeep
+
+# Test / Coverage
+coverage/
