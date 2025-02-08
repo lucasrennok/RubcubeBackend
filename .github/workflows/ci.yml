@@ -25,11 +25,10 @@ jobs:
 
       - name: Check commit message
         run: |
-          if git rev-parse --verify HEAD >/dev/null 2>&1; then
-            npx commitlint --from HEAD --to HEAD
-          else
-            echo "Skipping Commitlint: Not enough commit history."
-          fi
+          COMMIT_MSG=$(git log -1 --pretty=format:"%h - %s" HEAD)
+          echo "Validating commit: $COMMIT_MSG"
+
+          npx commitlint --from HEAD --to HEAD
 
       - name: Verify format
         run: npm run format
