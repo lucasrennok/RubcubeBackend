@@ -44,6 +44,20 @@ Depois é preciso executar o `npm run dev` para testar a API localmente.
 
 É possível testar os retornos importando a collection criada do Postman, o arquivo está no repositório e se chama: `Rubcube Backend API.postman_collection.json`
 
+Primeiro é necessário importar ele para o postman para testar cada roda devidamente. Elas estão com os nomes de cada história.
+
+Além disso, é necessário renomear o .env.example para .env
+
+## Resultados
+
+![Exemplo de retorno história 1](docs/images/historia1.png)
+
+![Exemplo de retorno história 2](docs/images/historia2.png)
+
+![Exemplo de retorno história 3-1](docs/images/historia3-1.png)
+
+![Exemplo de retorno história 3-2](docs/images/historia3-2.png)
+
 ## Dificuldades
 
 - Entendimento do arquivo de log
