@@ -2,13 +2,14 @@ import fs from 'fs';
 import path from 'path';
 import { GameStats } from '../models/gameStats';
 
+// Retorna os jogos, jogadores e status de mortes do jogo do log em questão
 export const parseLogFile = async (): Promise<GameStats[]> => {
   const logPath = path.resolve(__dirname, '../../logs/games.log');
   const logData = fs.readFileSync(logPath, 'utf-8');
 
   let games: GameStats[] = [];
   let currentGame: GameStats | null = null;
-  let playerNames: Record<string, string> = {}; // Para armazenar os últimos nomes dos jogadores
+  let playerNames: Record<string, string> = {};
 
   logData.split('\n').forEach((line) => {
     line = line.trim();
@@ -16,13 +17,13 @@ export const parseLogFile = async (): Promise<GameStats[]> => {
     if (line.includes('InitGame:')) {
       if (currentGame) games.push(currentGame);
       currentGame = { id: `game_${games.length + 1}`, kills: [], players: [] };
-      playerNames = {}; // Resetar os nomes dos jogadores para cada jogo
+      playerNames = {};
     } else if (currentGame && line.includes('ClientUserinfoChanged:')) {
       const match = line.match(/ClientUserinfoChanged: (\d+) n\\([^\\]+)/);
       if (match) {
         const playerId = match[1];
         const playerName = match[2];
-        playerNames[playerId] = playerName; // Atualiza o nome do jogador
+        playerNames[playerId] = playerName;
       }
     } else if (currentGame && line.includes('ClientBegin:')) {
       const match = line.match(/ClientBegin: (\d+)/);

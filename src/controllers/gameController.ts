@@ -6,7 +6,8 @@ import {
 } from '../services/gameService';
 import { getRanking } from '../services/rankingService';
 
-// Retorna estatísticas detalhadas do jogo
+// História 1
+// Retorna estatísticas detalhadas de mortes do jogo
 export const getGameDetailedStats = async (req: Request, res: Response) => {
   const gameId = req.params.id;
   const stats = await getGameStatistics(gameId);
@@ -18,22 +19,25 @@ export const getGameDetailedStats = async (req: Request, res: Response) => {
   res.json(stats);
 };
 
-// Retorna estatísticas de todos os jogos
-export const getAllGameStats = async (req: Request, res: Response) => {
-  const stats = await getStats();
-  res.json(stats);
-};
-
-// Retorna estatísticas de um jogo específico
-export const getGameStatsById = async (req: Request, res: Response) => {
-  const gameId = req.params.id;
-  const stats = await getStatsById(gameId);
-  res.json(stats);
-};
-
+// História 2
 // Retorna ranking de um jogo específico
 export const getGameRanking = async (req: Request, res: Response) => {
   const gameId = req.params.id;
   const ranking = await getRanking(gameId);
   res.json(ranking);
+};
+
+// História 3
+// Retorna estatísticas gerais de todos os jogos
+export const getAllGameStats = async (req: Request, res: Response) => {
+  const stats = await getStats();
+  res.json(stats);
+};
+
+// História 3
+// Retorna estatísticas gerais de um jogo específico
+export const getGameStatsById = async (req: Request, res: Response) => {
+  const gameId = req.params.id;
+  const stats = await getStatsById(gameId);
+  res.json(stats);
 };

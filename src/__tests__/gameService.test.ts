@@ -2,7 +2,7 @@ import { getGameDetailedStats } from '../controllers/gameController';
 import { getGameRanking } from '../controllers/gameController';
 import { Request, Response } from 'express';
 
-// Mock das funções para não precisar do log real
+// Mock dos jogos / estatísticas de morte
 jest.mock('../services/gameService', () => ({
   getGameStatistics: jest.fn(async (gameId: string) => {
     if (gameId === 'game_1') {
@@ -23,6 +23,7 @@ jest.mock('../services/gameService', () => ({
   }),
 }));
 
+// Mock dos jogos / estatísticas de ranking
 jest.mock('../services/rankingService', () => ({
   getRanking: jest.fn(async (gameId: string) => {
     if (gameId === 'game_1') {
@@ -43,7 +44,7 @@ jest.mock('../services/rankingService', () => ({
   }),
 }));
 
-describe('Game Service Tests', () => {
+describe('Game routes tests', () => {
   let req: Partial<Request>;
   let res: Partial<Response>;
 
@@ -55,8 +56,8 @@ describe('Game Service Tests', () => {
     };
   });
 
-  // Teste para `getGameDetailedStats` - game_1
-  it('should return detailed stats for game_1', async () => {
+  // Teste de `getGameDetailedStats` - game_1
+  it('should return stats for game_1', async () => {
     req.params = { id: 'game_1' };
     await getGameDetailedStats(req as Request, res as Response);
     expect(res.json).toHaveBeenCalledWith({
@@ -67,8 +68,8 @@ describe('Game Service Tests', () => {
     });
   });
 
-  // Teste para `getGameDetailedStats` - game_2
-  it('should return detailed stats for game_2', async () => {
+  // Teste de `getGameDetailedStats` - game_2
+  it('should return stats for game_2', async () => {
     req.params = { id: 'game_2' };
     await getGameDetailedStats(req as Request, res as Response);
     expect(res.json).toHaveBeenCalledWith({
@@ -83,14 +84,14 @@ describe('Game Service Tests', () => {
     });
   });
 
-  // Teste para `getGameRanking` - game_1
+  // Teste de `getGameRanking` - game_1
   it('should return ranking for game_1', async () => {
     req.params = { id: 'game_1' };
     await getGameRanking(req as Request, res as Response);
     expect(res.json).toHaveBeenCalledWith([{ name: 'Isgalamido', score: 0 }]);
   });
 
-  // Teste para `getGameRanking` - game_2
+  // Teste de `getGameRanking` - game_2
   it('should return ranking for game_2', async () => {
     req.params = { id: 'game_2' };
     await getGameRanking(req as Request, res as Response);

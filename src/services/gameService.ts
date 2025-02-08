@@ -20,7 +20,6 @@ export const getGameStatistics = async (gameId: string) => {
 
   if (!game) return null;
 
-  // Estatísticas
   const totalKills = game.kills.length;
   const killsByCause: Record<string, number> = {};
   let worldKills = 0;

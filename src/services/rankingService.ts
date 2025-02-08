@@ -11,24 +11,22 @@ export const getRanking = async (gameId: string): Promise<Ranking[]> => {
   let ranking: Record<string, number> = {};
   const lastNames: Record<string, string> = {};
 
-  // Inicializar jogadores no ranking com 0 pontos
   game.players.forEach((player) => {
     ranking[player.id] = 0;
     lastNames[player.id] = player.name;
   });
 
-  // Processar kills e contabilizar pontuação corretamente
   for (const kill of game.kills) {
     if (kill.killer === '<world>') {
-      ranking[kill.victim] = (ranking[kill.victim] || 0) - 1; // Morreu para <world>, perde 1 ponto
+      ranking[kill.victim] = (ranking[kill.victim] || 0) - 1; // Morte para <world> perde 1 ponto
     } else if (kill.killer !== kill.victim) {
-      // Se o jogador matou outro, ganha 1 ponto (suicídios não alteram)
+      // Se o jogador matou outro, ganha 1 ponto e o que morreu perde 1 ponto
       ranking[kill.killer] = (ranking[kill.killer] || 0) + 1;
       ranking[kill.victim] = (ranking[kill.victim] || 0) - 1;
     }
   }
 
-  // Consolidar os scores usando o último nome do jogador
+  // Usar o último nome do jogador
   let finalRanking: Record<string, number> = {};
 
   for (const [playerId, score] of Object.entries(ranking)) {
