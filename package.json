@@ -1,33 +1,51 @@
 {
-  "name": "rubcubebackend",
-  "version": "1.0.0",
-  "description": "Rubcube bakcend hiring exercise",
-  "main": "index.js",
-  "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
-  "repository": {
-    "type": "git",
-    "url": "git+https://github.com/lucasrennok/RubcubeBackend.git"
-  },
-  "keywords": [
-    "rubcube",
-    "node",
-    "typescript",
-    "backend"
-  ],
-  "author": "lucasrennok",
-  "license": "ISC",
-  "bugs": {
-    "url": "https://github.com/lucasrennok/RubcubeBackend/issues"
-  },
-  "homepage": "https://github.com/lucasrennok/RubcubeBackend#readme",
-  "devDependencies": {
-    "eslint": "^9.20.0",
-    "eslint-config-prettier": "^10.0.1",
-    "eslint-plugin-prettier": "^5.2.3",
-    "husky": "^9.1.7",
-    "lint-staged": "^15.4.3",
-    "prettier": "^3.4.2"
-  }
+	"name": "rubcubebackend",
+	"version": "1.0.0",
+	"description": "Rubcube bakcend hiring exercise",
+	"main": "dist/server.js",
+	"scripts": {
+		"build": "tsc",
+		"start": "node dist/server.js",
+		"dev": "ts-node-dev --respawn --transpile-only src/server.ts",
+		"lint": "eslint 'src/**/*.ts'",
+		"lint:fix": "eslint 'src/**/*.ts' --fix",
+		"format": "prettier --write 'src/**/*.ts'",
+		"test": "jest",
+		"prepare": "husky install"
+	},
+	"repository": {
+		"type": "git",
+		"url": "git+https://github.com/lucasrennok/RubcubeBackend.git"
+	},
+	"keywords": [
+		"rubcube",
+		"node",
+		"typescript",
+		"backend"
+	],
+	"author": "lucasrennok",
+	"license": "ISC",
+	"bugs": {
+		"url": "https://github.com/lucasrennok/RubcubeBackend/issues"
+	},
+	"homepage": "https://github.com/lucasrennok/RubcubeBackend#readme",
+	"devDependencies": {
+		"eslint": "^9.20.0",
+		"eslint-config-prettier": "^10.0.1",
+		"eslint-plugin-prettier": "^5.2.3",
+		"husky": "^9.1.7",
+		"lint-staged": "^15.4.3",
+		"prettier": "^3.4.2"
+	},
+	"lint-staged": {
+		"*.ts": [
+			"eslint --fix",
+			"prettier --write"
+		]
+	},
+	"husky": {
+		"hooks": {
+			"pre-commit": "lint-staged"
+		}
+	}
 }
