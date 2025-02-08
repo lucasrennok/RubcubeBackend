@@ -13,6 +13,9 @@ module.exports = [
       globals: {
         test: 'readonly',
         expect: 'readonly',
+        process: 'readonly',
+        __dirname: 'readonly',
+        console: 'readonly',
       },
     },
     plugins: {
@@ -24,6 +27,18 @@ module.exports = [
       'no-console': 'warn',
       '@typescript-eslint/no-explicit-any': 'warn',
       '@typescript-eslint/explicit-function-return-type': 'off',
+    },
+  },
+  {
+    files: ['**/__tests__/**/*.ts'],
+    languageOptions: {
+      globals: {
+        jest: 'readonly',
+        describe: 'readonly',
+        it: 'readonly',
+        beforeEach: 'readonly',
+        expect: 'readonly',
+      },
     },
   },
 ];
