@@ -55,7 +55,7 @@ describe('Game Service Tests', () => {
     };
   });
 
-  // ✅ Teste para `getGameDetailedStats` - game_1
+  // Teste para `getGameDetailedStats` - game_1
   it('should return detailed stats for game_1', async () => {
     req.params = { id: 'game_1' };
     await getGameDetailedStats(req as Request, res as Response);
@@ -67,7 +67,7 @@ describe('Game Service Tests', () => {
     });
   });
 
-  // ✅ Teste para `getGameDetailedStats` - game_2
+  // Teste para `getGameDetailedStats` - game_2
   it('should return detailed stats for game_2', async () => {
     req.params = { id: 'game_2' };
     await getGameDetailedStats(req as Request, res as Response);
@@ -83,14 +83,14 @@ describe('Game Service Tests', () => {
     });
   });
 
-  // ✅ Teste para `getGameRanking` - game_1
+  // Teste para `getGameRanking` - game_1
   it('should return ranking for game_1', async () => {
     req.params = { id: 'game_1' };
     await getGameRanking(req as Request, res as Response);
     expect(res.json).toHaveBeenCalledWith([{ name: 'Isgalamido', score: 0 }]);
   });
 
-  // ✅ Teste para `getGameRanking` - game_2
+  // Teste para `getGameRanking` - game_2
   it('should return ranking for game_2', async () => {
     req.params = { id: 'game_2' };
     await getGameRanking(req as Request, res as Response);
