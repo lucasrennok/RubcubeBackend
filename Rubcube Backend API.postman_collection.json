@@ -1,0 +1,133 @@
+{
+	"info": {
+		"_postman_id": "7c5eeffa-1bfa-4a7b-a9f1-b821ce0fd595",
+		"name": "Rubcube Backend API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "História 1 - Obter estatística de mortes por partida",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/games/:id/stats",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"games",
+						":id",
+						"stats"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "game_1"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "História 2 - Obter ranking de jogadores por partida",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/games/:id/ranking",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"games",
+						":id",
+						"ranking"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "game_2",
+							"description": "ID do jogo"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "História 3 - Obter Estatísticas de um Jogo Específico",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/games/:id",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"games",
+						":id"
+					],
+					"variable": [
+						{
+							"key": "id",
+							"value": "game_2",
+							"description": "ID do jogo"
+						}
+					]
+				}
+			},
+			"response": []
+		},
+		{
+			"name": "História 3 - Obter Estatísticas de Todos os Jogos",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "{{baseUrl}}/api/games",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"api",
+						"games"
+					]
+				}
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "http://localhost:3000",
+			"type": "default"
+		}
+	]
+}
