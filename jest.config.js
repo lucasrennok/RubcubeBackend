@@ -3,10 +3,12 @@ module.exports = {
   preset: 'ts-jest',
   testEnvironment: 'node',
   roots: ['<rootDir>/src'],
-  transform: {
-    '^.+\\.ts$': 'ts-jest',
+  collectCoverageFrom: [
+    'src/**/*.ts',
+    '!src/server.ts',
+    '!src/**/__tests__/**',
+  ],
+  coverageThreshold: {
+    global: { lines: 90, branches: 80 },
   },
-  moduleFileExtensions: ['ts', 'js', 'json'],
-  collectCoverage: true,
-  collectCoverageFrom: ['src/**/*.ts'],
 };

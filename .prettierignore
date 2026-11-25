@@ -1,0 +1,6 @@
+# Arquivos gerados ou exportados
+dist
+coverage
+logs
+package-lock.json
+*.postman_collection.json
