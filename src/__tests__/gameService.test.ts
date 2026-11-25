@@ -59,7 +59,7 @@ describe('Game routes tests', () => {
   // Teste de `getGameDetailedStats` - game_1
   it('should return stats for game_1', async () => {
     req.params = { id: 'game_1' };
-    await getGameDetailedStats(req as Request, res as Response);
+    await getGameDetailedStats(req as Request<{ id: string }>, res as Response);
     expect(res.json).toHaveBeenCalledWith({
       id: 'game_1',
       totalKills: 0,
@@ -71,7 +71,7 @@ describe('Game routes tests', () => {
   // Teste de `getGameDetailedStats` - game_2
   it('should return stats for game_2', async () => {
     req.params = { id: 'game_2' };
-    await getGameDetailedStats(req as Request, res as Response);
+    await getGameDetailedStats(req as Request<{ id: string }>, res as Response);
     expect(res.json).toHaveBeenCalledWith({
       id: 'game_2',
       totalKills: 11,
@@ -87,14 +87,14 @@ describe('Game routes tests', () => {
   // Teste de `getGameRanking` - game_1
   it('should return ranking for game_1', async () => {
     req.params = { id: 'game_1' };
-    await getGameRanking(req as Request, res as Response);
+    await getGameRanking(req as Request<{ id: string }>, res as Response);
     expect(res.json).toHaveBeenCalledWith([{ name: 'Isgalamido', score: 0 }]);
   });
 
   // Teste de `getGameRanking` - game_2
   it('should return ranking for game_2', async () => {
     req.params = { id: 'game_2' };
-    await getGameRanking(req as Request, res as Response);
+    await getGameRanking(req as Request<{ id: string }>, res as Response);
     expect(res.json).toHaveBeenCalledWith([
       {
         name: 'Mocinha',

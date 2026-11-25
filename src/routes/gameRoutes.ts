@@ -1,4 +1,4 @@
-import express from 'express';
+import { Router } from 'express';
 import {
   getAllGameStats,
   getGameStatsById,
@@ -6,24 +6,17 @@ import {
   getGameDetailedStats,
 } from '../controllers/gameController';
 
-const router = express.Router();
+// No Express 5, erros em handlers async vão direto para o middleware de erro.
+const router = Router();
 
-// Endpoint para obter as estatísticas de mortes por jogo
-// História 1
-router.get('/games/:id/stats', async (req, res) => {
-  await getGameDetailedStats(req, res);
-});
+// História 1: estatísticas de mortes por jogo
+router.get('/games/:id/stats', getGameDetailedStats);
 
-// Endpoint para obter o ranking de um jogo específico
-// História 2
+// História 2: ranking de um jogo
 router.get('/games/:id/ranking', getGameRanking);
 
-// Endpoint para obter todas as estatísticas de todos os jogos
-// História 3
+// História 3: estatísticas de todos os jogos / de um jogo
 router.get('/games', getAllGameStats);
-
-// Endpoint para obter estatísticas de um jogo específico
-// História 3
 router.get('/games/:id', getGameStatsById);
 
 export default router;

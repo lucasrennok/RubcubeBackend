@@ -1,19 +1,19 @@
-import express from 'express';
-import cors from 'cors';
-import gameRoutes from './routes/gameRoutes';
 import dotenv from 'dotenv';
+import { createApp } from './app';
 
-dotenv.config();
+dotenv.config({ quiet: true });
 
-const app = express();
+const PORT = Number(process.env.PORT) || 3000;
+const HOST = process.env.HOST || '0.0.0.0';
 
-app.use(cors());
-app.use(express.json());
-
-app.use('/api', gameRoutes);
-
-const PORT = process.env.PORT || 3000;
-
-app.listen(PORT, () => {
-  console.log(`Server port: ${PORT}`);
+const server = createApp().listen(PORT, HOST, () => {
+  console.log(`API rodando em http://${HOST}:${PORT}`);
 });
+
+const shutdown = (signal: string) => {
+  console.log(`${signal} recebido, encerrando...`);
+  server.close(() => process.exit(0));
+};
+
+process.on('SIGINT', () => shutdown('SIGINT'));
+process.on('SIGTERM', () => shutdown('SIGTERM'));
